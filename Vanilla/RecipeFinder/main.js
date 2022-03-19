@@ -36,8 +36,18 @@ function addResult(name, imgUrl){
     mealImgUrl.setAttribute('src', imgUrl);
     mealImg.appendChild(mealImgUrl);
 
+    var mealPopupBtn=document.createElement("button");
+    mealPopupBtn.classList.add("meal-popup-btn");
+    mealPopupBtn.innerText="자세히 보기";
+    mealPopupBtn.onclick = function(){
+        window.open('./popup.html', 
+            'recipe', 
+            'left=130, bottom=100, location=no, resizable=no');
+    }
+
     meal.appendChild(mealName);
     meal.appendChild(mealImg);
+    meal.appendChild(mealPopupBtn)
     results.appendChild(meal);   
 }
 

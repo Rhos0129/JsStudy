@@ -117,3 +117,34 @@ body{
      color: white;
      background-color: var(--Orange);
  }
+
+ .meal .meal-popup-btn{
+    background: var(--Orange);
+    color: white;
+    padding: 7px 12px;
+    border: none;
+    margin-top: 5px;
+    margin-bottom: 10px
+}
+
+.popup-content{
+    margin-left: 414px;
+    padding-top: 35px;
+}
+
+.popup-img img{
+    width: 400px;
+    height: 400px;
+    position: fixed;
+    border: 3px solid var(--Orange);
+}
+
+.popup-header h3{
+    margin-left: 406px;
+    background-color: var(--Orange);
+    color: white;
+    text-align: center;
+    padding: 4px 0;
+    position: fixed;
+    width: 50%;
+}
