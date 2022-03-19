@@ -148,3 +148,9 @@ body{
     position: fixed;
     width: 50%;
 }
+
+.result-text h3{
+    color: var(--Orange);
+    text-align: center;
+    display: block;
+}
