@@ -1,13 +1,11 @@
 // variables
-var keyword = document.querySelector('.search');
-
-const results = document.querySelector('.result-container');
-const meal = document.querySelector('.meal');
+var keyword = document.querySelector('.keyword');
+const resultContainer = document.querySelector('.result-container');
 const searchBtn = document.querySelector('.search-btn');
 
 // popup창 : localStorage에 데이터가 있다면 해당id의 레시피 읽기
 if(localStorage.getItem('id')){ 
-    var id = localStorage.getItem('id') ;
+    var id = localStorage.getItem('id');
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
     .then(res => res.json())
     .then(data => {
@@ -27,15 +25,15 @@ function search(keyword){
         var i=0
         while(i<data.meals.length){
             var mealData=data.meals[i];
-            addResult(mealData.strMeal, mealData.strMealThumb, mealData.idMeal)
+            addResult(mealData.strMeal, mealData.strMealThumb, mealData.idMeal);
             i=i+1;
         }
     }) // 서버에서 주는 json 데이터 읽기 
 }
 
 function addResult(name, imgUrl, id){
-    var meal=document.createElement("div");
-    meal.classList.add("meal");
+    var result=document.createElement("div")
+    result.classList.add("result")
     
     var mealName=document.createElement("div");
     mealName.classList.add("meal-name");
@@ -59,16 +57,20 @@ function addResult(name, imgUrl, id){
             'left=130, bottom=100, location=no, resizable=no');
     }
 
-    meal.appendChild(mealName);
-    meal.appendChild(mealImg);
-    meal.appendChild(mealPopupBtn)
-    results.appendChild(meal);   
+    result.appendChild(mealName);
+    result.appendChild(mealImg);
+    result.appendChild(mealPopupBtn);
+    resultContainer.appendChild(result);   
 }
 
 function resultsClear(){
-    while(results.hasChildNodes()){
-        results.removeChild(results.firstChild);
+    while(resultContainer.hasChildNodes()){
+        resultContainer.removeChild(resultContainer.firstChild);
     }
+}
+
+function clearLocalStorage(){
+    localStorage.removeItem('id');
 }
 
 // events
@@ -77,3 +79,9 @@ searchBtn.addEventListener('click', e => {
     search(keyword.value);
 })
 
+keyword.addEventListener('keypress', e => {
+    if(e.key === 'Enter'){    // enter를 눌렀을 때  
+        resultsClear();
+        search(keyword.value);
+    }
+})
