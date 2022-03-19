@@ -1,5 +1,5 @@
 // variables
-const GAME_TIME=5;
+const GAME_TIME=20;
 
 let score = 0;
 let time = GAME_TIME;
@@ -35,7 +35,15 @@ function countDown(){
 
 function buttonChange(text){
     button.innerText=text;
-    text==='게임시작' ? button.classList.remove('loading'): button.classList.add('loading');
+    if(text==='게임시작'){
+        button.classList.remove('loading');
+        wordInput.disabled = true;
+        wordDisplay.innerText='???';        
+    } else{
+        button.classList.add('loading');
+        wordInput.disabled = false;
+        wordInput.value='';
+    }
 }
 
 // 게임플레이 설정
@@ -45,9 +53,11 @@ function run(){
     time = GAME_TIME;
     wordInput.focus();
     scoreDisplay.innerText = 0;
+    getRandomWord()
     timeInterval = setInterval(countDown, 1000);
     checkInterval = setInterval(checkStatus, 50);
     buttonChange('게임중');
+    wordInput.focus();
 }
 
 // 단어 가져오기 (api 이용)
@@ -73,8 +83,7 @@ function checkMatch(){
         if(!isPlaying) return; //게임 중이 아니면 점수가 안오르도록
         score++;
         scoreDisplay.innerText=score;
-        const randomIndex = Math.floor(Math.random() * words.length);
-        wordDisplay.innerText = words[randomIndex];
+        getRandomWord();
     }
 }
 
@@ -84,4 +93,9 @@ function checkStatus(){
         buttonChange("게임시작");
         clearInterval(checkInterval);
     }
+}
+
+function getRandomWord(){
+    const randomIndex = Math.floor(Math.random() * words.length);
+    wordDisplay.innerText = words[randomIndex];
 }
