@@ -14,6 +14,8 @@ const dragged = {
 }
 
 let gamePlaying = false;
+let timeInterval = null;
+let time = 0;
 
 
 // functions
@@ -21,13 +23,20 @@ let gamePlaying = false;
 // 타일 섞기
 function setGame(){
     isPlaying = true;
+    time = 0;
     container.innerHTML = "";
+    gameText.style.display = 'none';
+    clearInterval(timeInterval);
     tiles = createImageTiles();
     tiles.forEach(tile => container.appendChild(tile));
     setTimeout(() => {
         container.innerHTML = "";
         shuffle(tiles).forEach(tile => container.appendChild(tile));
-    }, 2000)
+        timeInterval = setInterval(() => {
+            time++;
+            playTime.innerText = time;
+        }, 1000)
+    }, 4000)
 }
 
 // 타일 생성하기 : 반복문 대신 배열 이용
@@ -51,7 +60,7 @@ function shuffle(array){
         [array[index], array[randomIndex]]=[array[randomIndex],array[index]];
         index--;
     }
-    return array;
+    return array
 }
 
 // 타일이 올바른 위치에 있는지 확인하기
@@ -59,8 +68,9 @@ function checkStatus(){
     const currentList = [...container.children];
     const unMatchedList = currentList.filter((child, index) => Number(child.getAttribute('data-index')) !== index ) // 한줄이므로 return도 생략
     if(unMatchedList.length === 0){
-        gameText.getElementsByClassName.display="block";
+        gameText.style.display="block";
         gamePlaying = false;
+        clearInterval(timeInterval);
     } 
 }
 
