@@ -93,7 +93,7 @@ body{
     width: 100px;
     height: 100px;
     color: white;
-    background: url("https://placeimg.com/400/400/any");
+    background: url(./questionMark.png);
 }
 
 .start-button{

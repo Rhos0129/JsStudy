@@ -17,17 +17,34 @@ let gamePlaying = false;
 let timeInterval = null;
 let time = 0;
 
+let imgUrl = 'https://placeimg.com/400/400';
+
+init()
+
 
 // functions
+function init(){
+    Array(tileCount).fill().forEach((_, i) => {
+        const li = document.createElement("li");
+        li.setAttribute('data-index', i);
+        li.setAttribute('draggable', 'true')
+        li.classList.add(`list${i}`); 
+        container.appendChild(li);
+    })
+}
 
 // 타일 섞기
 function setGame(){
     isPlaying = true;
     time = 0;
+    playTime.innerText = time;
     container.innerHTML = "";
     gameText.style.display = 'none';
     clearInterval(timeInterval);
     tiles = createImageTiles();
+    tiles.forEach(tile => {
+        container.appendChild(tile);
+    })
     tiles.forEach(tile => container.appendChild(tile));
     setTimeout(() => {
         container.innerHTML = "";
@@ -41,12 +58,14 @@ function setGame(){
 
 // 타일 생성하기 : 반복문 대신 배열 이용
 function createImageTiles(){
+    const randomIndex = Math.floor(Math.random()*100);
     const tempArray=[]; 
     Array(tileCount).fill().forEach((_, i) => {
         const li = document.createElement("li");
         li.setAttribute('data-index', i);
         li.setAttribute('draggable', 'true');
         li.classList.add(`list${i}`); // Template String >> 백틱` + ${변수명}
+        li.style.backgroundImage = `url('${imgUrl}/${randomIndex}')`;
         tempArray.push(li);
     })
     return tempArray;
