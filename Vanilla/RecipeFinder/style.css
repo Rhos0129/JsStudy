@@ -1,0 +1,119 @@
+/* Vanilla Js */
+
+:root{
+    --Orange:rgba(255,127,0);
+    --Brown:rgba(150, 75, 0);
+    --lightGray:rgba(218,218,218);
+    --darkGray:rgba(128, 128, 128, 0.877);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+html{
+    position: relative;
+    min-height: 100%;
+}
+
+body{
+    background-color: white;
+    min-height: 97vh;
+    overflow: auto;
+}
+
+#header{
+    padding: 10px;
+    font-size: large;
+    text-align: center;
+    background-color: var(--Orange);
+    color: white;
+}
+
+#header > p{
+    margin-bottom: 0;
+    text-align: center;
+}
+
+#header > h1{
+    margin-top: 8px;
+}
+
+#content{
+    padding-top : 2rem;
+    padding-bottom: 7rem;
+    padding-left: 10%;
+    padding-right: 10%;
+    height: auto;
+    min-height: 100%;
+}
+
+
+#footer{
+    position:absolute;
+    padding: 0;
+    background-color: var(--Orange);
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: right;
+}
+
+#footer p{
+    padding: 15px;
+}
+
+/* Recipe Finder */
+#content h3{
+    text-align: center;
+ }
+ 
+ .search-box {
+     text-align: center;
+     margin: 10px;
+     height: 30px;
+ }
+ 
+ .search{
+     display: inline;
+     margin: 0;
+     height: 100%;
+     width: 50%;
+     padding-left: 8px;
+ }
+ 
+ .search-btn{
+     padding: 0 10px;
+     height: 100%;
+     background-color: var(--Orange);
+     color: white;
+     border: none;
+     border-radius: 15%;
+ }
+ 
+ .result-container{
+     margin-top: 3rem;
+     display: grid;
+     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+     gap: 20px;
+ }
+ 
+ .meal{
+     border: 2px solid var(--Orange);
+     text-align: center;
+     background: white; 
+ }
+ 
+ .meal-img img{
+     width: 200px;
+     height: 200px;
+     margin: 10px;
+ }
+ 
+ .meal-name{
+     padding: 10px;
+     color: white;
+     background-color: var(--Orange);
+ }
