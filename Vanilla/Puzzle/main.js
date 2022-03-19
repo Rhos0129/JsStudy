@@ -13,13 +13,14 @@ const dragged = {
     index: null // 섞인 후 타일의 위치
 }
 
-setGame();
+let gamePlaying = false;
 
 
 // functions
 
 // 타일 섞기
 function setGame(){
+    isPlaying = true;
     container.innerHTML = "";
     tiles = createImageTiles();
     tiles.forEach(tile => container.appendChild(tile));
@@ -53,11 +54,22 @@ function shuffle(array){
     return array;
 }
 
+// 타일이 올바른 위치에 있는지 확인하기
+function checkStatus(){
+    const currentList = [...container.children];
+    const unMatchedList = currentList.filter((child, index) => Number(child.getAttribute('data-index')) !== index ) // 한줄이므로 return도 생략
+    if(unMatchedList.length === 0){
+        gameText.getElementsByClassName.display="block";
+        gamePlaying = false;
+    } 
+}
+
 
 // events
 
 // Drag & Drops : li에서 drag설정을 해야 깔끔하게 잘 된다.
 container.addEventListener('dragstart', e => { // 택한 타일 설정
+    if(!isPlaying) return;
     const obj=e.target // 옮기려고 택한 타일
     dragged.el = obj;
     dragged.class = obj.className;
@@ -67,6 +79,7 @@ container.addEventListener('dragover', e => {
     e.preventDefault() // drop이벤트가 발생할 수 있도록 기본동작 막기
 })
 container.addEventListener('drop', e => { 
+    if(!isPlaying) return;
     const obj=e.target; // 옮길 위치의 타일
     
     if(obj.className !== dragged.class){ // 타일을 옮기면 내부코드 실행
@@ -86,4 +99,10 @@ container.addEventListener('drop', e => {
         dragged.index > droppedIndex ? obj.before(dragged.el) : obj.after(dragged.el); // Drag한 타일을 Drop한 위치 앞, 뒤에 넣기 -> 타일이 뒤로 한칸이 밀린다.
         isLast ? originPlace.after(obj) : originPlace.before(obj); // Drag한 타일과 Drop할 위치의 타일의 위치만 바꾼다.
     }
+    checkStatus();
+})
+
+// Start버튼 
+startButton.addEventListener('click', () => {
+    setGame();
 })
