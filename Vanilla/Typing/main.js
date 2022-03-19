@@ -3,8 +3,10 @@ const GAME_TIME=5;
 
 let score = 0;
 let time = GAME_TIME;
+let words = [];
 let isPlaying=false;
 let timeInterval;
+let checkInterval;
 
 const wordInput = document.querySelector('.word-input');
 const wordDisplay = document.querySelector('.word-display');
@@ -13,17 +15,15 @@ const timeDisplay=document.querySelector('.time');
 const button=document.querySelector('.button');
 
 // events
-wordInput.addEventListener('input', () => {
-    if(wordInput.value.toLowerCase() === wordDisplay.innerText.toLowerCase()){
-        score++;
-        scoreDisplay.innerText=score;
-        wordInput.value='';
-    }
-})
+init();
 
-buttonChange('게임시작')
 
 // functions
+function init(){
+    getWords();
+    wordInput.addEventListener('input', checkMatch);
+}
+
 function countDown(){
     timeDisplay.innerText=time;
     if(!isPlaying){
@@ -37,8 +37,40 @@ function buttonChange(text){
     text==='게임시작' ? button.classList.remove('loading'): button.classList.add('loading');
 }
 
+// 게임플레이 설정
 function run(){ 
+    if(isPlaying) return //중복실행이 안되도록
     isPlaying=true;
     time = GAME_TIME;
+    wordInput.focus();
+    scoreDisplay.innerText = 0;
     timeInterval = setInterval(countDown, 1000);
+    checkInterval = setInterval(checkStatus, 50);
+    buttonChange('게임중');
+}
+
+// 단어 가져오기 (후에 api 이용)
+function getWords(){
+    words = ["Apple", "Banana", "Cherry"];
+    buttonChange('게임시작');
+}
+
+// 단어일치여부 확인 후 점수 올리기
+function checkMatch(){
+    if(wordInput.value.toLowerCase() === wordDisplay.innerText.toLowerCase()){
+        wordInput.value='';
+        if(!isPlaying) return; //게임 중이 아니면 점수가 안오르도록
+        score++;
+        scoreDisplay.innerText=score;
+        const randomIndex = Math.floor(Math.random() * words.length);
+        wordDisplay.innerText = words[randomIndex];
+    }
+}
+
+// 게임상태 확인
+function checkStatus(){
+    if(!isPlaying && time === 0){
+        buttonChange("게임시작");
+        clearInterval(checkInterval);
+    }
 }
