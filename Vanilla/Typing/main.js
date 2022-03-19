@@ -20,6 +20,7 @@ init();
 
 // functions
 function init(){
+    buttonChange('게임 로딩중..');
     getWords();
     wordInput.addEventListener('input', checkMatch);
 }
@@ -49,11 +50,21 @@ function run(){
     buttonChange('게임중');
 }
 
-// 단어 가져오기 (후에 api 이용)
-function getWords(){
-    words = ["Apple", "Banana", "Cherry"];
-    buttonChange('게임시작');
-}
+// 단어 가져오기 (api 이용)
+function getWords(){    
+    axios.get('https://random-word-api.herokuapp.com/word?number=50')
+        .then(function(response){
+            response.data.forEach((word) => { //단어 길이 짧은 것만
+                if(word.length < 10){
+                    words.push(word);
+                }
+            })
+            buttonChange('게임시작');
+        })
+        .catch(function(error){
+            console.log(error);
+        })
+    }
 
 // 단어일치여부 확인 후 점수 올리기
 function checkMatch(){
