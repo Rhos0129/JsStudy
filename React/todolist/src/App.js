@@ -1,11 +1,42 @@
-import React from "react"
+import React, { Component } from "react";
+import styled, { createGlobalStyle } from "styled-components";
+import Header from "./layout/Header";
+import Content from "./layout/Content";
+import Footer from "./layout/Footer";
 
-function App() {
-  return (
-    <div className="App">
-      Hello!
-    </div>
-  );
+class App extends Component{
+  render(){
+    return(
+      <Container>
+        <GlobalStyle />
+        <Header title="TodoList" />
+        <Content />
+        <Footer />
+      </Container>
+    )
+  }
 }
+
+
+const Container = styled.div``;
+
+const GlobalStyle = createGlobalStyle`
+  *{
+      margin: 0;
+      padding: 0;
+      font-family: 'Noto Sans KR', sans-serif;
+  }
+
+  html{
+      position: relative;
+      min-height: 100%;
+  }
+
+  body{
+      background-color: white;
+      min-height: 97vh;
+      overflow: auto;
+  }
+`;
 
 export default App;
