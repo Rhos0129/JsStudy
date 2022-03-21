@@ -27,6 +27,20 @@ class Clock extends Component{
             </Containter>
         )
     }
+    
+    getDate(){ // date를 업데이트하는 메소드
+        this.setState({date: new Date()})
+    }
+
+    // 컴포넌트가 화면에 전부 그려졌을 때 실행되는 Life Cycle Method
+    componentDidMount(){ // 1분마다 getDate() 실행
+        this.oneMinuteCall = setInterval(() => this.getDate(), 60000)
+    }
+
+    // 화면에 그려진 컴포넌트가 사라지기 직전에 호출되는 Life Cycle Method
+    componentWillUnmount(){
+        clearInterval(this.oneMinuteCall)
+    }
 }
 
 const Containter = styled.div`
