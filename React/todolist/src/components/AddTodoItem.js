@@ -6,10 +6,24 @@ class AddTodoItem extends Component{
     render(){
         return(
             <Container>
-                <Input placeholder="오늘의 할일"></Input>
-                <CreateBtn>+</CreateBtn>
+                <Input id="input" placeholder="오늘의 할일" onKeyPress={this.add}></Input>
+                <CreateBtn id="createBtn" onClick={this.add}>+</CreateBtn>
             </Container>
         )
+    }
+
+    add = (e) => { // 화살표함수로 구현 - 화살표함수에서 this는 상위 태그를 가르키기 때문에 bind()를 대신할 수 있다.
+        const input = document.querySelector("#input");
+        const createBtn = document.querySelector("#createBtn");
+        if (e.key === "Enter" || e.target === createBtn){
+            const inputValue = input.value;
+            const todoList = JSON.parse(localStorage.getItem("todoList")) || [] // localStorage에 todoList가 없으면 []로 설정
+
+            // localStorage 에 저장 : 웹브라우저를 닫은 후 다시 열어도 저장되어 있도록 구현
+            localStorage.setItem("todoList", JSON.stringify([...todoList, inputValue])); // localStorage에는 문자열만 지정할 수 있으므로 문자열로 변환 
+            input.value = "";
+
+        }
     }
 }
 
