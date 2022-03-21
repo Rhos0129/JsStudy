@@ -23,6 +23,7 @@ class AddTodoItem extends Component{
             localStorage.setItem("todoList", JSON.stringify([...todoList, inputValue])); // localStorage에는 문자열만 지정할 수 있으므로 문자열로 변환 
             input.value = "";
 
+            this.props.componentDidMount();
         }
     }
 }
