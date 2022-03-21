@@ -16,7 +16,13 @@ class TodoList extends Component{
 }
 
 const Container = styled.div`
-    border: 1px solid black;
+    background-color: var(--Orange);
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 2rem;
 `;
 
 export default TodoList;

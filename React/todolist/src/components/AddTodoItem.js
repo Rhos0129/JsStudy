@@ -40,6 +40,7 @@ const Input = styled.input`
     width: 80%;
     outline: 0;
     border: 2px solid var(--Orange);
+    border-radius: 10px 0 0 10px;
 `;
 const CreateBtn = styled.button`
     font-size: xx-large;
@@ -47,7 +48,7 @@ const CreateBtn = styled.button`
     color: white;
     background-color: var(--Orange);
     border-style: none;
-    border-radius: 0 20% 20% 0;
+    border-radius: 0 10px 10px 0;
     width: 45px;
 `;
 

@@ -13,7 +13,10 @@ class TodoItem extends Component{
 }
 
 const Container = styled.div`
-    border: 1px solid blue;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 5px 10px;
 `;
 
 export default TodoItem;
