@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import Clock from "../components/Clock";
 
 class Content extends Component{
     render(){
         return(
-            <Container></Container>
+            <Container>
+                <Clock />
+            </Container>
         )
     }
 }
