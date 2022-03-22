@@ -17,7 +17,7 @@ class Content extends Component{
             <Container>
                 <Clock />
                 <AddTodoItem componentDidMount={this.componentDidMount}/>
-                <TodoList todoList={this.state.todoList} remove={this.remove} />
+                <TodoList todoList={this.state.todoList} remove={this.remove} modify={this.modify} />
             </Container>
         )
     }
@@ -28,13 +28,24 @@ class Content extends Component{
         })
     }
 
-    remove = (idx) => { // 
+    remove = (idx) => {
         var _todoList = [...Array.from(this.state.todoList).splice(0, idx), ...Array.from(this.state.todoList).splice(idx+1)]
+        this.changeTodoList(_todoList)
+    }
+
+    modify = (idx, todo) => {
+        var _todoList = Array.from(this.state.todoList);
+        _todoList[idx]=todo;
+        this.changeTodoList(_todoList)
+    }
+    
+    changeTodoList = (_todoList) => {
         this.setState({
             todoList: _todoList
         });
         localStorage.setItem("todoList", JSON.stringify(_todoList));
     }
+
 }
 
 const Container=styled.div`

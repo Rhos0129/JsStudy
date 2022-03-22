@@ -8,7 +8,7 @@ class TodoList extends Component{
         return(
             <Container>
                 {(this.props.todoList).map((todo, idx) =>  // 여러 컴포넌트 생성
-                    <TodoItem todo={todo} key={idx} idx={idx} remove={this.props.remove}/>
+                    <TodoItem todo={todo} key={idx} idx={idx} remove={this.props.remove} modify={this.props.modify}/>
                 )}
             </Container>
         )
