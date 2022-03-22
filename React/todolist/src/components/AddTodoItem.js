@@ -7,15 +7,15 @@ class AddTodoItem extends Component{
         return(
             <Container>
                 <Input id="input" placeholder="오늘의 할일" onKeyPress={this.add}></Input>
-                <CreateBtn id="createBtn" onClick={this.add}>+</CreateBtn>
+                <AddBtn id="addBtn" onClick={this.add}>+</AddBtn>
             </Container>
         )
     }
 
     add = (e) => { // 화살표함수로 구현 - 화살표함수에서 this는 상위 태그를 가르키기 때문에 bind()를 대신할 수 있다.
         const input = document.querySelector("#input");
-        const createBtn = document.querySelector("#createBtn");
-        if (e.key === "Enter" || e.target === createBtn){
+        const addBtn = document.querySelector("#addBtn");
+        if (e.key === "Enter" || e.target === addBtn){
             const inputValue = input.value;
             const todoList = JSON.parse(localStorage.getItem("todoList")) || [] // localStorage에 todoList가 없으면 []로 설정
 
@@ -42,7 +42,7 @@ const Input = styled.input`
     border: 2px solid var(--Orange);
     border-radius: 10px 0 0 10px;
 `;
-const CreateBtn = styled.button`
+const AddBtn = styled.button`
     font-size: xx-large;
     font-weight: 800;
     color: white;

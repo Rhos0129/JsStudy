@@ -17,15 +17,23 @@ class Content extends Component{
             <Container>
                 <Clock />
                 <AddTodoItem componentDidMount={this.componentDidMount}/>
-                <TodoList todoList={this.state.todoList} />
+                <TodoList todoList={this.state.todoList} remove={this.remove} />
             </Container>
         )
     }
 
     componentDidMount = () => { // 컴포넌트가 그려지면 localStorage에 있던 데이터가 state로 저장
         this.setState({
-            todoList: JSON.parse(localStorage.getItem("todoList")) // localStorage에 todoList가 없으면 []로 설정
+            todoList: JSON.parse(localStorage.getItem("todoList")) || [] // localStorage에 todoList가 없으면 []로 설정
         })
+    }
+
+    remove = (idx) => { // 
+        var _todoList = [...Array.from(this.state.todoList).splice(0, idx), ...Array.from(this.state.todoList).splice(idx+1)]
+        this.setState({
+            todoList: _todoList
+        });
+        localStorage.setItem("todoList", JSON.stringify(_todoList));
     }
 }
 
