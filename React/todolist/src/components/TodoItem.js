@@ -6,16 +6,19 @@ class TodoItem extends Component{
     constructor(props){
         super(props);
         this.state = {
-            todo : props.todo
+            txt: props.todo.txt,
+            checked: props.todo.checked
         }
     }
 
     render(){
         return(
             <Container>
-                <Todo disabled={true} onChange={this.onChange} value={this.state.todo} onKeyPress={this.startModify}></Todo>
+                <CheckBox type="checkbox" onChange={this.onChangeChecked} checked={this.state.checked}></CheckBox>
+                <Todo disabled={true} onChange={this.onChangeTxt} value={this.state.txt} onKeyPress={this.startModify}></Todo>
                 <Btn onClick={(e) => 
-                    this.activateInput(e.target.parentNode.parentNode.firstChild)}>
+                    this.activateInput(e.target.parentNode.previousSibling)
+                }>
                         <i className="bi bi-pencil-square"></i>
                 </Btn>
                 <Btn onClick={() => 
@@ -26,20 +29,27 @@ class TodoItem extends Component{
         )
     }
 
-    onChange = (e) => {
+    onChangeTxt = (e) => {
         this.setState({
-            todo: e.target.value
+            txt: e.target.value
         })
+    }
+    
+    onChangeChecked = (e) => {
+        this.setState({
+            checked: e.target.checked
+        });
+        this.props.modify(this.props.idx, {txt: this.state.txt, checked: e.target.checked});
     }
 
     activateInput(target){
         target.removeAttribute('disabled');
-        target.focus()
+        target.focus();
     }
 
     startModify = (e) => {
-        if(e.key === "Enter"){
-            this.props.modify(this.props.idx, e.target.value);
+        if(e.key === "Enter" ){
+            this.props.modify(this.props.idx, this.state);
             e.target.setAttribute('disabled', true);
         }
     }
@@ -71,7 +81,15 @@ const Todo = styled.input`
     background-color: white;
     color: black;
     padding: 5px;
-    width: 88%;
+    width: 80%;
+`;
+
+const CheckBox = styled.input`
+    &:checked {
+        color: white;
+        accent-color: var(--Orange);
+    }
+    width: 8%;
 `;
 
 export default TodoItem;
