@@ -18,11 +18,11 @@ class TodoList extends Component{
 const Container = styled.div`
     background-color: var(--Orange);
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     gap: 10px;
     padding: 10px;
     border-radius: 10px;
-    margin-top: 2rem;
+    height: 50vh;
 `;
 
 export default TodoList;

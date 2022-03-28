@@ -29,7 +29,6 @@ class AddTodoItem extends Component{
 }
 
 const Container = styled.div`
-    padding-left: 20px;
     display: flex;
     justify-content: center;
     align-items: center;

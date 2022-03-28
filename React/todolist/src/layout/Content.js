@@ -15,9 +15,13 @@ class Content extends Component{
     render(){
         return(
             <Container>
-                <Clock />
-                <AddTodoItem componentDidMount={this.componentDidMount}/>
-                <TodoList todoList={this.state.todoList} remove={this.remove} modify={this.modify} />
+                <LeftBox>
+                    <Clock />
+                    <AddTodoItem componentDidMount={this.componentDidMount}/>
+                </LeftBox>
+                <RightBox>
+                    <TodoList todoList={this.state.todoList} remove={this.remove} modify={this.modify} />
+                </RightBox>
             </Container>
         )
     }
@@ -49,12 +53,27 @@ class Content extends Component{
 }
 
 const Container=styled.div`
-    padding-top : 2rem;
-    padding-bottom: 7rem;
-    padding-left: 10%;
-    padding-right: 10%;
-    height: auto;
-    min-height: 100%;
+    flex-grow: 1; // 나머지 전체 화면
+    display: flex;
+    flex-direction: row;
+    justify-content: center; // 가로로 중앙배치 (space-around, space-between)
+    align-items: center; // 세로로 중앙배치
+    gap: 10%;
+    padding: 10%;
+`;
+
+const LeftBox = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    min-height: 50vh;
+`;
+
+const RightBox = styled.div`
+    flex: 1;
+    min-height: 50vh;
 `;
 
 export default Content;

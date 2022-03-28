@@ -13,7 +13,6 @@ class Footer extends Component{
 }
 
 const Container = styled.div`
-  position:absolute;
   background-color: var(--Orange);
   bottom: 0;
   width: 100%;
