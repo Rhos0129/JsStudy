@@ -23,6 +23,7 @@ const Container = styled.div`
     padding: 10px;
     border-radius: 10px;
     height: 50vh;
+    overflow-y: auto;
 `;
 
 export default TodoList;

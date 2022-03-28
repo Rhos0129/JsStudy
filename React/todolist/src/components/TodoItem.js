@@ -61,6 +61,7 @@ const Container = styled.div`
     overflow: hidden;
     display: flex;
     align-items: center;
+    min-height: 30px;
 `;
 
 const Btn = styled.button`
