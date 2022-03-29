@@ -3,6 +3,10 @@ import styled from "styled-components"
 import "../layout/common.css"
 
 class TodoItem extends Component{
+    shouldComponentUpdate(newProps, newState){
+        return this.props.todo.txt !== newProps.todo.txt;
+    }
+
     constructor(props){
         super(props);
         this.state = {
@@ -12,6 +16,7 @@ class TodoItem extends Component{
     }
 
     render(){
+        console.log(this.props.todo)
         return(
             <Container>
                 <CheckBox type="checkbox" onChange={this.onChangeChecked} checked={this.state.checked}></CheckBox>
