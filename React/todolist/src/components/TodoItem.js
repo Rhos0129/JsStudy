@@ -4,12 +4,20 @@ import "../layout/common.css"
 
 class TodoItem extends Component{
     shouldComponentUpdate(newProps, newState){
-        return this.props.todo.txt !== newProps.todo.txt || this.state.txt !== newState.txt;
+        if(this.props.todo.txt !== newProps.todo.txt){
+            this.setState({
+                txt: newProps.todo.txt,
+                checked: newProps.todo.checked
+            })
+            return false
+        } 
+        return true
     }
 
     constructor(props){
         super(props);
         this.state = {
+            idx: props.idx,
             txt: props.todo.txt,
             checked: props.todo.checked
         }
@@ -26,20 +34,14 @@ class TodoItem extends Component{
                         <i className="bi bi-pencil-square"></i>
                 </Btn>
                 <Btn onClick={() => 
-                    this.props.remove(this.props.idx)}>
+                    this.props.remove(this.props.idx)
+                }>
                         <i className="bi bi-trash"></i>
                 </Btn>                
             </Container>
         )
     }
     
-    componentDidUpdate = () => {
-        this.setState({
-            txt: this.props.todo.txt,
-            checked: this.props.todo.checked
-        })
-    }
-
     onChangeTxt = (e) => {
         this.setState({
             txt: e.target.value
@@ -52,18 +54,19 @@ class TodoItem extends Component{
         });
         this.props.modify(this.props.idx, {txt: this.state.txt, checked: e.target.checked});
     }
-
+    
     activateInput(target){
         target.removeAttribute('disabled');
         target.focus();
     }
-
+    
     startModify = (e) => {
         if(e.key === "Enter" ){
             this.props.modify(this.props.idx, this.state);
             e.target.setAttribute('disabled', true);
         }
     }
+
 }
 
 const Container = styled.div`
