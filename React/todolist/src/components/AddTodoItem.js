@@ -12,17 +12,14 @@ class AddTodoItem extends Component{
         )
     }
 
-    add = (e) => { // 화살표함수로 구현 - 화살표함수에서 this는 상위 태그를 가르키기 때문에 bind()를 대신할 수 있다.
+    add = (e) => {
         const input = document.querySelector("#input");
         const addBtn = document.querySelector("#addBtn");
         if (e.key === "Enter" || e.target === addBtn){
-            const inputValue = input.value;
-            const todoList = JSON.parse(localStorage.getItem("todoList")) || [] // localStorage에 todoList가 없으면 []로 설정
-
-            // localStorage 에 저장 : 웹브라우저를 닫은 후 다시 열어도 저장되어 있도록 구현
-            localStorage.setItem("todoList", JSON.stringify([...todoList, {txt: inputValue, checked: false}])); // localStorage에는 문자열만 지정할 수 있으므로 문자열로 변환 
+            if(input.value === "") return;
+            const todoList = JSON.parse(localStorage.getItem("todoList")) || [];
+            localStorage.setItem("todoList", JSON.stringify([{txt: input.value, checked: false}, ...todoList]));
             input.value = "";
-
             this.props.componentDidMount();
         }
     }
