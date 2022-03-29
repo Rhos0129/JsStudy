@@ -17,7 +17,6 @@ class TodoItem extends Component{
     constructor(props){
         super(props);
         this.state = {
-            idx: props.idx,
             txt: props.todo.txt,
             checked: props.todo.checked
         }
