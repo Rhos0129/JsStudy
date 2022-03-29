@@ -4,7 +4,7 @@ import "../layout/common.css"
 
 class TodoItem extends Component{
     shouldComponentUpdate(newProps, newState){
-        return this.props.todo.txt !== newProps.todo.txt;
+        return this.props.todo.txt !== newProps.todo.txt || this.state.txt !== newState.txt;
     }
 
     constructor(props){
@@ -16,7 +16,6 @@ class TodoItem extends Component{
     }
 
     render(){
-        console.log(this.props.todo)
         return(
             <Container>
                 <CheckBox type="checkbox" onChange={this.onChangeChecked} checked={this.state.checked}></CheckBox>
@@ -32,6 +31,13 @@ class TodoItem extends Component{
                 </Btn>                
             </Container>
         )
+    }
+    
+    componentDidUpdate = () => {
+        this.setState({
+            txt: this.props.todo.txt,
+            checked: this.props.todo.checked
+        })
     }
 
     onChangeTxt = (e) => {
