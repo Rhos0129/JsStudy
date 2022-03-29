@@ -32,6 +32,8 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 85%;
+    margin-top: 5px;
 `;
 const Input = styled.input`
     padding-left: 10px;

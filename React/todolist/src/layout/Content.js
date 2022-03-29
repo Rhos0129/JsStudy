@@ -59,21 +59,35 @@ const Container=styled.div`
     justify-content: center; // 가로로 중앙배치 (space-around, space-between)
     align-items: center; // 세로로 중앙배치
     gap: 10%;
-    padding: 10%;
+    padding: 5% 10%;
+    @media (max-width: 738Px) {
+        flex-direction: column;
+        padding: 1% 10%;
+    }
 `;
 
 const LeftBox = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex: 1;
-    min-height: 50vh;
+    height: 50vh;
+    @media (max-width: 738Px) {
+        height: 10vh;
+        flex: 1;
+        padding: 1% 5%;
+    }
 `;
 
 const RightBox = styled.div`
     flex: 1;
     min-height: 50vh;
+    min-width: 50vh;
+    @media (max-width: 738Px) {
+        min-height: 25vh;
+        flex: 3;
+    }
 `;
 
 export default Content;

@@ -24,6 +24,10 @@ const Container = styled.div`
     border-radius: 10px;
     height: 50vh;
     overflow-y: auto;
+    @media (max-width: 738Px) {
+        height: 55vh;
+        margin: 1% 5%;
+    }
 `;
 
 export default TodoList;

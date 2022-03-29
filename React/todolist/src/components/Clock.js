@@ -15,15 +15,19 @@ class Clock extends Component{
         const {date} = this.state;
         return(
             <Containter>
-                <CurDate>
-                    {dateFns.format(date, " yyyy/MM/dd ")}
-                </CurDate>
-                <CurDay>
-                    {dateFns.format(date, "EEEE")}
-                </CurDay>
-                <CurTime>
-                    {dateFns.format(date, " HH : mm ")}
-                </CurTime>
+                <LeftBox>
+                    <CurDate>
+                        {dateFns.format(date, " yyyy/MM/dd ")}
+                    </CurDate>
+                    <CurDay>
+                        {dateFns.format(date, "EEEE")}
+                    </CurDay>
+                </LeftBox>
+                <RightBox>
+                    <CurTime>
+                        {dateFns.format(date, " HH : mm ")}
+                    </CurTime>
+                </RightBox>
             </Containter>
         )
     }
@@ -46,21 +50,42 @@ class Clock extends Component{
 const Containter = styled.div`
     text-align: center;
     color: var(--Orange);
+    margin-bottom: 5px;
+    @media (max-width: 738Px) {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
 `;
 
 const CurDate = styled.div`
     font-size: 30px;
+    @media (max-width: 738Px) {
+      font-size: 20px;
+    }
 `;
 
 const CurDay = styled.div`
     font-size: 30px;
     font-style: italic;
-
+    @media (max-width: 738Px) {
+      font-size: 20px;
+    }
 `;
 
 const CurTime = styled.div`
     font-size: 80px;
     font-weight: 800;
+    @media (max-width: 890px) {
+      font-size: 40px;
+    }
 `;
+
+const LeftBox = styled.div`
+
+`;
+const RightBox = styled.div``;
 
 export default Clock;
