@@ -1,10 +1,8 @@
-/* Vanilla Js */
-
 :root{
-    --Orange:rgba(255,127,0);
-    --Brown:rgba(150, 75, 0);
-    --lightGray:rgba(218,218,218);
-    --darkGray:rgba(128, 128, 128, 0.877);
+    --Orange:RGB(253, 126, 21);
+    --Brown:RGB(101, 50, 7);
+    --lightGray: RGB(232, 236, 239);
+    --darkGray: RGB(108, 117, 125);
 }
 
 *{
@@ -13,47 +11,30 @@
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-html{
-    position: relative;
-    min-height: 100%;
-}
-
 body{
-    background-color: white;
-    min-height: 97vh;
-    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-#header{
-    padding: 10px;
-    font-size: large;
+header{
+    padding: 16px;
     text-align: center;
     background-color: var(--Orange);
     color: white;
 }
 
-#header > p{
-    margin-bottom: 0;
-    text-align: center;
+main{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 5% 10%;
 }
 
-#header > h1{
-    margin-top: 8px;
-}
-
-#content{
-    padding-top : 2rem;
-    padding-bottom: 7rem;
-    padding-left: 10%;
-    padding-right: 10%;
-    height: auto;
-    min-height: 100%;
-}
-
-
-#footer{
-    position:absolute;
-    padding: 0;
+footer{
     background-color: var(--Orange);
     bottom: 0;
     width: 100%;
@@ -61,35 +42,25 @@ body{
     text-align: right;
 }
 
-#footer p{
+footer p{
     padding: 15px;
 }
 
 
 /* Puzzle */
-
-#content{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
 .play-time{
     font-size: 3rem;
-    color: var(--Brown)
+    color: var(--Orange)
 }
 
-#content ul{
-    margin-top: 1rem;
+ul{
     list-style: none;
-    border: 2px solid var(--darkNavy);
+    border: 5px solid var(--Orange);
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 하나의 요소를 4번 반복하겠다!! */
-    
 }
 
-#content li{
+li{
     width: 100px;
     height: 100px;
     color: white;
@@ -97,98 +68,97 @@ body{
 }
 
 .start-button{
-    background: var(--Brown);
+    background: var(--Orange);
     color: white;
     border: none;
     padding: 1rem 2rem;
-    margin-top: 1rem;
 }
 
 .game-text{
     position: absolute;
     font-size: 45px;
-    color: red;
+    color: var(--Orange);
     text-shadow: 2px 2px var(--darkGray);
     font-weight: bold;
     display: none;
 }
 
-#content .list0{
+.list0{
     background-position-x: 0px;
     background-position-y: 0px;
 }
 
-#content  .list1{
+.list1{
     background-position-x: -100px;
     background-position-y: 0px;
 }
 
-#content .list2{
+.list2{
     background-position-x: -200px;
     background-position-y: 0px;
 }
 
-#content .list3{
+.list3{
     background-position-x: -300px;
     background-position-y: 0px;
 }
 
-#content .list4{
+.list4{
     background-position-x: 0px;
     background-position-y: -100px;
 }
 
-#content .list5{
+.list5{
     background-position-x: -100px;
     background-position-y: -100px;
 }
 
-#content .list6{
+.list6{
     background-position-x: -200px;
     background-position-y: -100px;
 }
 
-#content .list7{
+.list7{
     background-position-x: -300px;
     background-position-y: -100px;
 }
 
-#content .list8{
+.list8{
     background-position-x: 0px;
     background-position-y: -200px;
 }
 
-#content .list9{
+.list9{
     background-position-x: -100px;
     background-position-y: -200px;
 }
 
-#content .list10{
+.list10{
     background-position-x: -200px;
     background-position-y: -200px;
 }
 
-#content .list11{
+.list11{
     background-position-x: -300px;
     background-position-y: -200px;
 }
 
-#content .list12{
+.list12{
     background-position-x: 0px;
     background-position-y: -300px;
 }
 
-#content .list13{
+.list13{
     background-position-x: -100px;
     background-position-y: -300px;
 }
 
-#content .list14{
+.list14{
     background-position-x: -200px;
     background-position-y: -300px;
 }
 
-#content .list15{
+.list15{
     background-position-x: -300px;
     background-position-y: -300px;
 }
