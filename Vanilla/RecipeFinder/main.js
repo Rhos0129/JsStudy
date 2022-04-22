@@ -3,7 +3,8 @@ var keyword = document.querySelector('.keyword');
 const resultContainer = document.querySelector('.result-container');
 const searchBtn = document.querySelector('.search-btn');
 const resultText = document.querySelector('.result-text');
-
+var modal = document.querySelector("#modal");
+var modalCloseBtn = document.querySelector("#modal-closeBtn");
 
 // functions
 function search(keyword){
@@ -13,7 +14,7 @@ function search(keyword){
         var mealData=data.meals;
         if(mealData){
             resultText.innerHTML='';
-            mealData.forEach(meal => addResult(meal.strMeal, meal.strMealThumb, meal.idMeal))
+            mealData.forEach(meal => addResult(meal.strMeal, meal.strMealThumb, meal.idMeal));
         } else{
             resultText.innerHTML="<h3> 검색결과가 없습니다. </h3>";
         }
@@ -21,11 +22,19 @@ function search(keyword){
     ) // 서버에서 주는 json 데이터 읽기 
 }
 
-function openPopup(id){
-    localStorage.setItem('id', id);
-    window.open('./popup.html', 
-    'recipe', 
-    'left=130, bottom=100, location=no, resizable=no');
+function openModal(id){
+    fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
+    .then(res => res.json())
+    .then(data => {
+        var mealData=data.meals[0];        
+        document.querySelector('.modal-header h3').innerText = mealData.strMeal;
+        document.querySelector('.modal-img img').setAttribute('src', mealData.strMealThumb);
+        document.querySelector('.modal-content p').innerText = mealData.strInstructions;
+
+        modal.classList.remove('hidden');
+        modal.classList.add('show');
+    })
+
 }
 
 function addResult(name, imgUrl, id){
@@ -37,34 +46,15 @@ function addResult(name, imgUrl, id){
         <div class="meal-img">
             <img src="${imgUrl}" alt="">
         </div>
-        <button class="meal-popup-btn" onclick="openPopup(${id})";>자세히 보기</button>
+        <button class="meal-modal-btn" onclick="openModal(${id})";>자세히 보기</button>
     </div>`;
     resultContainer.innerHTML+=html
 }
-
-// popup창 : localStorage에 데이터가 있다면 해당id의 레시피 읽기
-(function(){
-    if(localStorage.getItem('id')){ 
-        var id = localStorage.getItem('id');
-        fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
-        .then(res => res.json())
-        .then(data => {
-            var mealData=data.meals[0];        
-            document.querySelector('.popup-header h3').innerText = mealData.strMeal;
-            document.querySelector('.popup-img img').setAttribute('src', mealData.strMealThumb);
-            document.querySelector('.popup-content p').innerText = mealData.strInstructions;
-        })
-    }
-})();
 
 function resultsClear(){
     while(resultContainer.hasChildNodes()){
         resultContainer.removeChild(resultContainer.firstChild);
     }
-}
-
-function clearLocalStorage(){
-    localStorage.removeItem('id');
 }
 
 // events
@@ -78,4 +68,9 @@ keyword.addEventListener('keypress', e => {
         resultsClear();
         search(keyword.value);
     }
+})
+
+modalCloseBtn.addEventListener("click", e => {
+    modal.classList.remove('show');
+    modal.classList.add('hidden');
 })

@@ -1,10 +1,8 @@
-/* Vanilla Js */
-
 :root{
-    --Orange:rgba(255,127,0);
-    --Brown:rgba(150, 75, 0);
-    --lightGray:rgba(218,218,218);
-    --darkGray:rgba(128, 128, 128, 0.877);
+    --Orange:RGB(253, 126, 21);
+    --Brown:RGB(101, 50, 7);
+    --lightGray: RGB(232, 236, 239);
+    --darkGray: RGB(108, 117, 125);
 }
 
 *{
@@ -13,47 +11,30 @@
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-html{
-    position: relative;
-    min-height: 100%;
-}
-
 body{
-    background-color: white;
-    min-height: 97vh;
-    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-#header{
-    padding: 10px;
-    font-size: large;
+header{
+    padding: 16px;
     text-align: center;
     background-color: var(--Orange);
     color: white;
 }
 
-#header > p{
-    margin-bottom: 0;
-    text-align: center;
+main{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 5% 10%;
 }
 
-#header > h1{
-    margin-top: 8px;
-}
-
-#content{
-    padding-top : 2rem;
-    padding-bottom: 7rem;
-    padding-left: 10%;
-    padding-right: 10%;
-    height: auto;
-    min-height: 100%;
-}
-
-
-#footer{
-    position:absolute;
-    padding: 0;
+footer{
     background-color: var(--Orange);
     bottom: 0;
     width: 100%;
@@ -61,92 +42,126 @@ body{
     text-align: right;
 }
 
-#footer p{
+footer p{
     padding: 15px;
 }
 
 /* Recipe Finder */
-#content h3{
+h3{
     text-align: center;
- }
+    color: var(--Orange);
+}
  
- .search-box {
-     text-align: center;
-     margin: 10px;
-     height: 30px;
- }
+.search-box {
+    width: 100%;
+    height: 30px;
+    text-align: center;
+}
  
- .keyword{
-     display: inline;
-     margin: 0;
-     height: 100%;
-     width: 50%;
-     padding-left: 8px;
- }
+.keyword{
+    width: 60%;
+    height: 100%;
+    padding-left: 8px;
+    outline: 0;
+    border: 2px solid var(--Orange);
+}
  
- .search-btn{
-     padding: 0 10px;
-     height: 100%;
-     background-color: var(--Orange);
-     color: white;
-     border: none;
-     border-radius: 15%;
- }
- 
- .result-container{
-     margin-top: 3rem;
-     display: grid;
-     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-     gap: 20px;
- }
- 
- .result{
-     border: 2px solid var(--Orange);
-     text-align: center;
-     background: white; 
- }
- 
- .meal-img img{
-     width: 200px;
-     height: 200px;
-     margin: 10px;
- }
- 
- .meal-name{
-     padding: 10px;
-     color: white;
-     background-color: var(--Orange);
- }
-
- .meal-popup-btn{
-    background: var(--Orange);
+.search-btn{
+    height: 100%;
+    padding: 0 10px;
+    background-color: var(--Orange);
     color: white;
-    padding: 7px 12px;
     border: none;
-    margin-top: 5px;
-    margin-bottom: 10px
+    border-radius: 15%;
+}
+ 
+.result-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+ 
+.result{
+    border: 3px solid var(--Orange);
+    text-align: center;
+    background: white;
 }
 
-.popup-content{
-    margin-left: 414px;
-    padding-top: 35px;
+.meal-img img{
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+}
+ 
+.meal-name{
+    padding: 10px;
+    color: white;
+    background-color: var(--Orange);
 }
 
-.popup-img img{
+.meal-modal-btn{
+   background: var(--Orange);
+   color: white;
+   padding: 7px 12px;
+   border: none;
+   width: 50%;
+   margin-bottom: 1rem;
+}
+
+#modal{
+    width: 810px;
+    height: 405px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid var(--Brown);
+    background-color: var(--Brown);
+    border-radius: 10px;
+}
+
+.hidden{
+    display: none;
+}
+
+.show{
+    display: block;
+}
+
+.modal-content{
+    padding-left: 414px;
+    color: white;
+    max-height: 370px;
+    overflow-y: auto;
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+}
+
+.modal-content::-webkit-scrollbar {
+    display: none;
+}
+
+
+.modal-img img{
     width: 400px;
     height: 400px;
     position: fixed;
-    border: 3px solid var(--Orange);
+    border: 3px solid var(--Brown);
 }
 
-.popup-header h3{
+.modal-header h3{
     margin-left: 406px;
-    background-color: var(--Orange);
     color: white;
     text-align: center;
     padding: 4px 0;
-    position: fixed;
     width: 50%;
+}
+
+#modal-closeBtn{
+    color: white;
+    float: right;
+    font-size: 21px;
 }
 
 .result-text h3{

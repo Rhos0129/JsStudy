@@ -4,24 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge; chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vanilla_RecipeFinder</title>
-
+    <title>VanillaJS_RecipeFinder</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./style.css">
-
 </head>
 
 <body>
-
-    <div id='header'>
-        <p>Vanilla JS</p>
+    <header>
+        <p>VanillaJS</p>
         <h1>Recipe Finder</h1>
-    </div>
+    </header>
     
-    <div id='content'>
-
+    <main>
         <h3>주재료를 입력하시면 메뉴를 찾아드립니다.</h3>
         <div class="search-box">
             <input type="text" class="keyword" placeholder="영어로 작성해주세요">
@@ -31,17 +28,26 @@
                 </svg>
             </button>   
         </div>
-
         <div class="result-container"></div>
-        <div class='result-text'></div>   
-
-        <script src="./main.js"></script>
-        
-    </div>
-
-    <div id="footer">
+        <div class='result-text'></div>           
+        <div id="modal" class="hidden">
+            <span id="modal-closeBtn"><i class="bi bi-x-square"></i></span>
+            <div class="modal-img">
+                <img src="" alt="">
+            </div>
+            <div class="modal-header">
+                <h3></h3>
+            </div>
+            <div class="modal-content">
+                <p></p>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
         <p>@Rhos0129</p>
-    </div>
-
+    </footer>
+    
+    <script src="./main.js"></script>
 </body>
 </html>
