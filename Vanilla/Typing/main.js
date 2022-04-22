@@ -1,5 +1,5 @@
 // variables
-const GAME_TIME=20;
+const GAME_TIME=30;
 
 let score = 0;
 let time = GAME_TIME;
@@ -62,7 +62,7 @@ function run(){
 
 // 단어 가져오기 (api 이용)
 function getWords(){    
-    axios.get('https://random-word-api.herokuapp.com/word?number=50')
+    axios.get('https://random-word-api.herokuapp.com/word?number=500')
         .then(function(response){
             response.data.forEach((word) => { //단어 길이 짧은 것만
                 if(word.length < 10){

@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge; chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vanilla_Typing</title>
-
+    <title>VanillaJS_Typing</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
@@ -13,23 +12,20 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
-    <div id='header'>
+    <Header>
         <div class="main">
             <p>VanillaJS</p>
             <h1>Typing</h1>
         </div>
-    </div>
+    </Header>
     
-    <div id='content'>
-
+    <main>
         <div class="word-display">
             ???
         </div>
-
-        <div class="word-input-box">
+        <div>
             <input type="text" class="word-input">
         </div>
-
         <div class="game-info">
             <div>
                 남은시간 : <span class="time">0</span>초
@@ -38,18 +34,15 @@
                 획득점수 : <span class="score">0</span>점
             </div>
         </div>
-
         <div>
-            <button class="button loading" onclick="run()">게임을 불러오는 중...</button>
+            <button class="button" onclick="run()">게임시작</button>
         </div>
-        
-    </div>
+    </main>
 
-    <div id="footer">
+    <footer>
         <p>@Rhos0129</p>
-    </div>
+    </footer>
 
     <script src="./main.js"></script>
-
 </body>
 </html>

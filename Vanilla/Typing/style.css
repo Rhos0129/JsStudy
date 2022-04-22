@@ -1,8 +1,8 @@
 :root{
-    --Orange:rgba(255,127,0);
-    --Brown:rgba(150, 75, 0);
-    --lightGray:rgba(218,218,218);
-    --darkGray:rgba(128, 128, 128, 0.877);
+    --Orange:RGB(253, 126, 21);
+    --Brown:RGB(101, 50, 7);
+    --lightGray: RGB(232, 236, 239);
+    --darkGray: RGB(108, 117, 125);
 }
 
 *{
@@ -11,47 +11,30 @@
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-html{
-    position: relative;
-    min-height: 100%;
-}
-
 body{
-    background-color: white;
-    min-height: 97vh;
-    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-#header{
-    padding: 10px;
-    font-size: large;
+header{
+    padding: 16px;
     text-align: center;
     background-color: var(--Orange);
     color: white;
 }
 
-#header > p{
-    margin-bottom: 0;
-    text-align: center;
+main{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 5% 10%;
 }
 
-#header > h1{
-    margin-top: 8px;
-}
-
-#content{
-    padding-top : 2rem;
-    padding-bottom: 7rem;
-    padding-left: 10%;
-    padding-right: 10%;
-    height: auto;
-    min-height: 100%;
-}
-
-
-#footer{
-    position:absolute;
-    padding: 0;
+footer{
     background-color: var(--Orange);
     bottom: 0;
     width: 100%;
@@ -59,38 +42,28 @@ body{
     text-align: right;
 }
 
-#footer p{
+footer p{
     padding: 15px;
 }
 
 /* Typing */
-
-#content{    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
 .word-display{
     font-size: 60px;
-    color: var(--Brown);
-}
-
-.word-input-box{
-    margin-top: 2rem;
+    color: var(--Orange);
 }
 
 .word-input{
     padding: 0.5rem;
     width: 300px;
+    outline: 0;
+    border: 2px solid var(--Orange);
 }
 
 .game-info{
-    margin-top: 2rem;
     font-size: 1.2rem;
     display: flex;
     width: 300px;
+    color: var(--Orange);
 }
 
 .game-info div{
@@ -102,17 +75,15 @@ body{
     font-size: 30px;
 }
 
-#content button{
+button{
     width: 200px;
     height: 35px;
     color: white;
     border: none;
-    margin-top: 2rem;
-    margin-bottom: 8rem;
 }
 
 .button{
-    background: var(--Brown);
+    background: var(--Orange);
     cursor: pointer;
 }
 
