@@ -29,22 +29,24 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 85%;
+    width: 100%;
     margin-top: 5px;
 `;
+
 const Input = styled.input`
     padding-left: 10px;
     height: 42px;
-    width: 80%;
+    width: 100%;
     outline: 0;
-    border: 2px solid var(--Orange);
+    border: 2px solid var(--mainColor);
     border-radius: 10px 0 0 10px;
 `;
+
 const AddBtn = styled.button`
     font-size: xx-large;
     font-weight: 800;
-    color: white;
-    background-color: var(--Orange);
+    color: var(--subColor);
+    background-color: var(--mainColor);
     border-style: none;
     border-radius: 0 10px 10px 0;
     width: 45px;

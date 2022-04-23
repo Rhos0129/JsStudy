@@ -13,7 +13,7 @@ class Message extends Component{
 }
 
 const Container = styled.div`
-    color: white;
+    color: var(--subColor);
     text-align: center;
 `;
 

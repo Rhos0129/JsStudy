@@ -17,8 +17,8 @@ const Container = styled.div`
     padding: 10px;
     font-size: large;
     text-align: center;
-    background-color: var(--Orange);
-    color: white;
+    background-color: var(--mainColor);
+    color: var(--subColor);
 `;
 
 const Title = styled.h1`

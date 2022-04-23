@@ -13,10 +13,10 @@ class Footer extends Component{
 }
 
 const Container = styled.div`
-  background-color: var(--Orange);
+  background-color: var(--mainColor);
   bottom: 0;
   width: 100%;
-  color: white;
+  color: var(--subColor);
   text-align: right;
 `;
 

@@ -23,18 +23,33 @@ class TodoList extends Component{
 }
 
 const Container = styled.div`
-    background-color: var(--Orange);
+    &::-webkit-scrollbar {
+        width: 10px;  /* 스크롤바의 너비 */
+    }
+    &::-webkit-scrollbar-thumb {
+        height: 30%; /* 스크롤바의 길이 */
+        background: var(--subColor); /* 스크롤바의 색상 */        
+        border-radius: 10px;
+    }
+    &::-webkit-scrollbar-track {
+        background: var(--mainColor);  /*스크롤바 뒷 배경 색상*/
+        border-radius: 10px;
+    }
+    background-color: var(--mainColor);
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 10px;
-    padding: 10px;
+    padding: 10px 0px;
     border-radius: 10px;
     height: 50vh;
-    overflow-y: auto;
+    overflow-y: scroll;
+    width: 100%;
     @media (max-width: 738Px) {
-        height: 55vh;
-        margin: 1% 5%;
+        height: 25vh;
     }
 `;
+
+
 
 export default TodoList;

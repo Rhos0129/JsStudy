@@ -65,7 +65,6 @@ class TodoItem extends Component{
             e.target.setAttribute('disabled', true);
         }
     }
-
 }
 
 const Container = styled.div`
@@ -75,35 +74,36 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     min-height: 30px;
+    width: 90%;
+    margin: 0px 10px;
 `;
 
 const Btn = styled.button`
     background-color: white;
     border: none;
-    color: var(--Orange);
-    width: 6%;
+    color: var(--mainColor);
+    width: 20px;
     padding: 5px;
 `;
 
 const Todo = styled.input`
     &:focus {
         outline: none;
-        color: var(--Orange);
+        color: var(--mainColor);
         font-size: large;
     }
     border-style: none;
     background-color: white;
-    color: black;
-    padding: 5px;
-    width: 80%;
+    color: var(--mainColor);
+    width: inherit;
 `;
 
 const CheckBox = styled.input`
     &:checked {
         color: white;
-        accent-color: var(--Orange);
+        accent-color: var(--subColor);
     }
-    width: 8%;
+    width: 40px;
 `;
 
 export default TodoItem;

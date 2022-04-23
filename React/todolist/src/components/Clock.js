@@ -49,7 +49,7 @@ class Clock extends Component{
 
 const Containter = styled.div`
     text-align: center;
-    color: var(--Orange);
+    color: var(--mainColor);
     margin-bottom: 5px;
     @media (max-width: 738Px) {
         display: flex;
@@ -62,29 +62,28 @@ const Containter = styled.div`
 
 const CurDate = styled.div`
     font-size: 30px;
-    @media (max-width: 738Px) {
-      font-size: 20px;
+    @media (max-width: 738px) {
+      font-size: 1rem;
     }
 `;
 
 const CurDay = styled.div`
     font-size: 30px;
     font-style: italic;
-    @media (max-width: 738Px) {
-      font-size: 20px;
+    @media (max-width: 738px) {
+      font-size: 1rem;
     }
 `;
 
 const CurTime = styled.div`
     font-size: 80px;
     font-weight: 800;
-    @media (max-width: 890px) {
-      font-size: 40px;
+    @media (max-width: 738px) {
+      font-size: 2.5rem;
     }
 `;
 
 const LeftBox = styled.div`
-
 `;
 const RightBox = styled.div``;
 
